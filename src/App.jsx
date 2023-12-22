@@ -6,6 +6,8 @@ import { Route, Routes } from 'react-router-dom';
 const Layout = lazy(() => import('./layout'));
 const Home = lazy(() => import('./pages/Home'));
 const Contacts = lazy(() => import('./pages/Contacts'));
+const Login = lazy(() => import('./pages/Login'));
+const Signup = lazy(() => import('./pages/Register'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,10 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="*" element={<div>404</div>} />
+        </Route>
+        <Route path="login/">
+          <Route index element={<Login />} />
+          <Route path="register" element={<Signup />} />
         </Route>
       </Routes>
     </Suspense>
