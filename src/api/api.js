@@ -27,6 +27,10 @@ class Api {
     const data = await axios.post(`users/login`, userData);
     return data;
   }
+
+  setToken(token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }
 }
 
 const api = new Api();

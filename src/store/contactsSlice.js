@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import api from 'api/api';
 
-const initialState = { contacts: [], isLoading: false, error: null };
+const initialState = { contacts: [] };
 
 const getAllContactsThunk = createAsyncThunk(
   'contacts/getAllContacts',
@@ -29,26 +29,15 @@ const deleteContactThunk = createAsyncThunk(
 
 const addContactThunk = createAsyncThunk(
   'contacts/addContact',
-  async (contact, thunkAPI) => {
+  async (newContact, thunkAPI) => {
     try {
-      const { data } = await api.addContact(contact);
+      const { data } = await api.addContact(newContact);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-const handlePending = state => {
-  state.isLoading = true;
-};
-const handleReject = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload;
-};
-const handleFulfilled = state => {
-  state.isLoading = false;
-};
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -63,10 +52,7 @@ const contactsSlice = createSlice({
       })
       .addCase(addContactThunk.fulfilled, (state, { payload }) => {
         state.contacts.push(payload);
-      })
-      .addMatcher(action => action.type.endsWith('pending'), handlePending)
-      .addMatcher(action => action.type.endsWith('rejected'), handleReject)
-      .addMatcher(action => action.type.endsWith('fulfilled'), handleFulfilled),
+      }),
 });
 
 const contactsReducer = contactsSlice.reducer;

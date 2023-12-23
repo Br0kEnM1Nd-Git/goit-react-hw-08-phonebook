@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { Suspense, lazy, useEffect } from 'react';
-import { getAllContactsThunk } from 'store/contactsSlice';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import AuthLayout from 'layout/AuthLayout';
 
 const Layout = lazy(() => import('./layout'));
 const Home = lazy(() => import('./pages/Home'));
@@ -10,12 +9,6 @@ const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Register'));
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllContactsThunk());
-  }, [dispatch]);
-
   return (
     <Suspense fallback={<div>loading...</div>}>
       <Routes>
@@ -24,7 +17,7 @@ const App = () => {
           <Route path="contacts" element={<Contacts />} />
           <Route path="*" element={<div>404</div>} />
         </Route>
-        <Route path="login/">
+        <Route path="login/" element={<AuthLayout />}>
           <Route index element={<Login />} />
           <Route path="register" element={<Signup />} />
         </Route>

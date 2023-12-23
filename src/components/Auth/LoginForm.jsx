@@ -1,6 +1,8 @@
 import Notiflix from 'notiflix';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { userLogInThunk } from 'store/authSlice';
+import styles from './AuthForm.module.scss';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -26,25 +28,28 @@ const LoginForm = () => {
   };
 
   return (
-    <form className={''} onSubmit={createContact}>
-      <label htmlFor="email">Email</label>
-      <input
-        type="text"
-        email="email"
-        id="email"
-        required
-        autoComplete="email"
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="tel"
-        name="password"
-        id="password"
-        required
-        autoComplete="pass"
-      />
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <form className={styles.authForm} onSubmit={createContact}>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          email="email"
+          id="email"
+          required
+          autoComplete="email"
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="tel"
+          name="password"
+          id="password"
+          required
+          autoComplete="pass"
+        />
+        <button type="submit">Login</button>
+      </form>
+      <Link to="register">Register</Link>
+    </>
   );
 };
 
