@@ -1,6 +1,9 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AuthLayout from 'layout/AuthLayout';
+import { selectToken } from 'store/selectors';
+import { useSelector } from 'react-redux';
+import api from 'api/api';
 
 const Layout = lazy(() => import('./layout'));
 const Home = lazy(() => import('./pages/Home'));
@@ -9,6 +12,12 @@ const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Register'));
 
 const App = () => {
+  const token = useSelector(selectToken);
+
+  useEffect(() => {
+    api.setToken(token);
+  }, [token]);
+
   return (
     <Suspense fallback={<div>loading...</div>}>
       <Routes>

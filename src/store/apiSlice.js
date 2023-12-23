@@ -14,7 +14,7 @@ const handleFulfilled = (state, { payload }) => {
   state.isLoading = false;
 };
 const apiSlice = createSlice({
-  name: 'root',
+  name: 'api',
   initialState: {
     isLoading: false,
     error: '',
@@ -27,4 +27,5 @@ const apiSlice = createSlice({
   },
 });
 
-export const apiReducer = apiSlice.reducer;
+const apiReducer = apiSlice.reducer;
+export default apiReducer;

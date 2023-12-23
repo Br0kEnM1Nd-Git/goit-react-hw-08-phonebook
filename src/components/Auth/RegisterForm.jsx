@@ -33,14 +33,14 @@ const RegisterForm = () => {
     <>
       <form className={styles.authForm} onSubmit={createContact}>
         <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" required autoComplete="name" />
+        <input type="text" name="name" id="name" required autoComplete="off" />
         <label htmlFor="email">Email</label>
         <input
           type="email"
           email="email"
           id="email"
           required
-          autoComplete="email"
+          autoComplete="off"
         />
         <label htmlFor="password">Password</label>
         <input
@@ -48,7 +48,7 @@ const RegisterForm = () => {
           name="password"
           id="password"
           required
-          autoComplete="pass"
+          autoComplete="off"
         />
         <button type="submit">Register</button>
       </form>

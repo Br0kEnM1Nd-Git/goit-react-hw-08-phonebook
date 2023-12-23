@@ -36,7 +36,7 @@ const LoginForm = () => {
           email="email"
           id="email"
           required
-          autoComplete="email"
+          autoComplete="off"
         />
         <label htmlFor="password">Password</label>
         <input
@@ -44,7 +44,7 @@ const LoginForm = () => {
           name="password"
           id="password"
           required
-          autoComplete="pass"
+          autoComplete="off"
         />
         <button type="submit">Login</button>
       </form>

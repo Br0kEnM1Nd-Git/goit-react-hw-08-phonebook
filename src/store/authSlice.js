@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import api from 'api/api';
 
 const initialState = {
-  isLogedIn: '',
+  isLoggedIn: '',
   user: null,
 };
 
@@ -44,14 +44,14 @@ const authSlice = createSlice({
       .addCase(
         userSignUpThunk.fulfilled,
         (state, { payload: { token, user } }) => {
-          state.isLogedIn = token;
+          state.isLoggedIn = token;
           state.user = user;
         }
       )
       .addCase(
         userLogInThunk.fulfilled,
         (state, { payload: { token, user } }) => {
-          state.isLogedIn = token;
+          state.isLoggedIn = token;
           state.user = user;
         }
       ),

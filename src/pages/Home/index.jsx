@@ -3,10 +3,16 @@ import { PhonebookList } from 'components/PhonebookList/PhonebookList';
 import { useDispatch } from 'react-redux';
 import { changeFilterAction } from 'store/filterSlice';
 import styles from './Home.module.scss';
+import { useEffect } from 'react';
+import { getAllContactsThunk } from 'store/contactsSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
-  dispatch(changeFilterAction(''));
+
+  useEffect(() => {
+    dispatch(changeFilterAction(''));
+    dispatch(getAllContactsThunk());
+  }, [dispatch]);
 
   return (
     <div className={styles.homeContainer}>

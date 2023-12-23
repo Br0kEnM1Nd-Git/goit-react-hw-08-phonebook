@@ -7,20 +7,22 @@ const selectContacts = state => state.contacts;
 const selectVisibleContacts = createSelector(
   [selectContacts, selectFilter],
   ({ contacts }, filter) =>
-    contacts.filter(({ name, phone }) => {
+    contacts.filter(({ name, number }) => {
       if (filter) {
         return (
           name.toLowerCase().includes(filter.toLowerCase()) ||
-          phone.includes(filter)
+          number.includes(filter)
         );
       }
       return true;
     })
 );
 
-const selectIsLoadingContacts = state => state.contacts.isLoading;
+const selectIsLoadingContacts = state => state.api.isLoading;
 
-const selectErrorContacts = state => state.contacts.error;
+const selectErrorContacts = state => state.api.error;
+
+const selectToken = state => state.auth.isLoggedIn;
 
 export {
   selectFilter,
@@ -28,4 +30,5 @@ export {
   selectVisibleContacts,
   selectErrorContacts,
   selectIsLoadingContacts,
+  selectToken,
 };
