@@ -52,6 +52,7 @@ const authRefreshThunk = createAsyncThunk(
   async (token, thunkAPI) => {
     try {
       if (!token) throw new Error('No Token');
+      api.setToken(token);
       const { data } = await api.authRefresh();
       return data;
     } catch (error) {

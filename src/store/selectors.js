@@ -8,7 +8,7 @@ const selectContacts = state => state.contacts;
 
 const selectVisibleContacts = createSelector(
   [selectContacts, selectFilter],
-  ({ contacts }, filter) =>
+  (contacts, filter) =>
     contacts.filter(({ name, number }) => {
       if (filter) {
         return (

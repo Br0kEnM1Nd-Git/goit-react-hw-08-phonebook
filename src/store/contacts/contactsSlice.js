@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import api from 'api/api';
 
-const initialState = { contacts: [] };
+const initialState = [];
 
 const getAllContactsThunk = createAsyncThunk(
   'contacts/getAllContacts',
@@ -45,13 +45,13 @@ const contactsSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(getAllContactsThunk.fulfilled, (state, { payload }) => {
-        state.contacts = payload;
+        return payload;
       })
       .addCase(deleteContactThunk.fulfilled, (state, { payload }) => {
-        state.contacts = state.contacts.filter(el => el.id !== payload);
+        return state.filter(el => el.id !== payload);
       })
       .addCase(addContactThunk.fulfilled, (state, { payload }) => {
-        state.contacts.push(payload);
+        state.push(payload);
       }),
 });
 

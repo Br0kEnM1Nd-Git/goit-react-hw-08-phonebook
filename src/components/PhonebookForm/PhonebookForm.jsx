@@ -1,15 +1,35 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContactThunk } from 'store/contacts/contactsSlice';
+import { selectContacts } from 'store/selectors';
 import styles from './PhonebookForm.module.scss';
+import Notiflix from 'notiflix';
 
 const PhonebookForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const createContact = e => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const number = form.number.value;
+
+    const isNumber = Number(number);
+
+    if (!isNumber) return Notiflix.Notify.warning('Incorrect number!');
+
+    const isNew = contacts.every(contact => {
+      const chName = contact.name.toLowerCase();
+      const lowName = name.toLowerCase();
+      const chNumber = contact.number;
+
+      if (chName === lowName) return false;
+      if (chNumber === number) return false;
+      return true;
+    });
+
+    if (!isNew)
+      return Notiflix.Notify.warning('This contact is already exist!');
 
     form.reset();
 
