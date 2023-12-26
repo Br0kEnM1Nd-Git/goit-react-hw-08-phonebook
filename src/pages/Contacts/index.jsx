@@ -7,6 +7,9 @@ import { getAllContactsThunk } from 'store/contacts/contactsSlice';
 import { changeFilterAction } from 'store/filter/filterSlice';
 import { selectIsLoggedIn } from 'store/selectors';
 
+import styles from './Contacts.module.scss';
+import PhonebookForm from 'components/PhonebookForm/PhonebookForm';
+
 const Contacts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,8 +26,14 @@ const Contacts = () => {
 
   return (
     <div>
-      <PhonebookFilter />
-      <PhonebookList />
+      <div className={styles.formContainer}>
+        <h2>Add Contact</h2>
+        <PhonebookForm />
+      </div>
+      <div className={styles.contactsContainer}>
+        <PhonebookFilter />
+        <PhonebookList />
+      </div>
     </div>
   );
 };
