@@ -45,6 +45,7 @@ const LoginForm = () => {
           id="password"
           required
           autoComplete="off"
+          minLength="7"
         />
         <button type="submit">Login</button>
       </form>

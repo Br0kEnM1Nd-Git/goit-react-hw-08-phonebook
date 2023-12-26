@@ -49,6 +49,7 @@ const RegisterForm = () => {
           id="password"
           required
           autoComplete="off"
+          minLength="7"
         />
         <button type="submit">Register</button>
       </form>
