@@ -28,6 +28,16 @@ class Api {
     return data;
   }
 
+  async logOut() {
+    const data = await axios.post('users/logout');
+    return data;
+  }
+
+  async authRefresh() {
+    const data = await axios.get('users/current');
+    return data;
+  }
+
   setToken(token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }

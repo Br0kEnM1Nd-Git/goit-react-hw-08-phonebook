@@ -1,7 +1,7 @@
 import ContactsItem from 'components/PhonebookList/ContactsItem';
 
 const visibleContactsMap = (visibleContacts, recent = false) => {
-  if (recent) {
+  if (recent && visibleContacts.length > 5) {
     const sliceLength = visibleContacts.length - 5;
     const recentContacts = visibleContacts.slice(sliceLength);
     return recentContacts.map(contact => {

@@ -1,9 +1,9 @@
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
-import authReducer from './authSlice';
-import contactsReducer from './contactsSlice';
-import filterReducer from './filterSlice';
-import apiReducer from './apiSlice';
+import authReducer from './auth/authSlice';
+import contactsReducer from './contacts/contactsSlice';
+import filterReducer from './filter/filterSlice';
+import apiReducer from './rootReducers/apiSlice';
 
 const persistConfig = {
   key: 'auth',

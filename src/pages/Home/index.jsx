@@ -1,18 +1,22 @@
 import PhonebookForm from 'components/PhonebookForm/PhonebookForm';
 import { PhonebookList } from 'components/PhonebookList/PhonebookList';
-import { useDispatch } from 'react-redux';
-import { changeFilterAction } from 'store/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFilterAction } from 'store/filter/filterSlice';
 import styles from './Home.module.scss';
 import { useEffect } from 'react';
-import { getAllContactsThunk } from 'store/contactsSlice';
+import { getAllContactsThunk } from 'store/contacts/contactsSlice';
+import { selectIsLoggedIn } from 'store/selectors';
 
 const Home = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(changeFilterAction(''));
-    dispatch(getAllContactsThunk());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(changeFilterAction(''));
+      dispatch(getAllContactsThunk());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <div className={styles.homeContainer}>

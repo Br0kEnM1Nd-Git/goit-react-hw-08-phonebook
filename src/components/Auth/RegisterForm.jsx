@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { userSignUpThunk } from 'store/authSlice';
+import { userSignUpThunk } from 'store/auth/authSlice';
 import styles from './AuthForm.module.scss';
 
 const RegisterForm = () => {

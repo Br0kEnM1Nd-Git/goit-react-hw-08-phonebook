@@ -13,6 +13,7 @@ export const PhonebookList = ({ recent = false }) => {
   const filter = useSelector(selectFilter);
   const isLoading = useSelector(selectIsLoadingContacts);
   const error = useSelector(selectErrorContacts);
+
   return (
     <>
       {recent && !filter && <h2>Recent contacts</h2>}
@@ -21,10 +22,14 @@ export const PhonebookList = ({ recent = false }) => {
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
-        ) : filter ? (
-          visibleContactsMap(visibleContacts)
+        ) : visibleContacts.length ? (
+          filter ? (
+            visibleContactsMap(visibleContacts)
+          ) : (
+            visibleContactsMap(visibleContacts, recent)
+          )
         ) : (
-          visibleContactsMap(visibleContacts, recent)
+          <p>No contacts yet.</p>
         )}
       </ul>
     </>

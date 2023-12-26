@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addContactThunk } from 'store/contactsSlice';
+import { addContactThunk } from 'store/contacts/contactsSlice';
 import styles from './PhonebookForm.module.scss';
 
 const PhonebookForm = () => {

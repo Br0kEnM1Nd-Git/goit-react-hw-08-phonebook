@@ -1,17 +1,25 @@
 import PhonebookFilter from 'components/PhonebookList/PhonebookFilter';
 import { PhonebookList } from 'components/PhonebookList/PhonebookList';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getAllContactsThunk } from 'store/contactsSlice';
-import { changeFilterAction } from 'store/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getAllContactsThunk } from 'store/contacts/contactsSlice';
+import { changeFilterAction } from 'store/filter/filterSlice';
+import { selectIsLoggedIn } from 'store/selectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    dispatch(changeFilterAction(''));
-    dispatch(getAllContactsThunk());
-  }, [dispatch]);
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      dispatch(changeFilterAction(''));
+      dispatch(getAllContactsThunk());
+    }
+  }, [dispatch, isLoggedIn, navigate]);
 
   return (
     <div>
