@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { addContactThunk } from 'store/contacts/contactsSlice';
-import { selectContacts } from 'store/selectors';
-import styles from './PhonebookForm.module.scss';
 import Notiflix from 'notiflix';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './PhonebookForm.module.scss';
+import { selectContacts } from 'store/contacts/selectors';
+import { addContactThunk } from 'store/contacts/thunks';
 
 const PhonebookForm = () => {
   const dispatch = useDispatch();

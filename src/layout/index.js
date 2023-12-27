@@ -1,8 +1,8 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import styles from './Layout.module.scss';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'store/selectors';
 import UserMenu from 'components/Auth/UserMenu';
+import styles from './Layout.module.scss';
+import { selectIsLoggedIn } from 'store/auth/selectors';
 
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

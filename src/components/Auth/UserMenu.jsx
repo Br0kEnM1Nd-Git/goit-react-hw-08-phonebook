@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userLogOutThunk } from 'store/auth/authSlice';
-import { selectUser } from 'store/selectors';
+import { selectUser } from 'store/auth/selectors';
+import { userLogOutThunk } from 'store/auth/thunks';
 
 const UserMenu = () => {
   const { email } = useSelector(selectUser) ?? {};

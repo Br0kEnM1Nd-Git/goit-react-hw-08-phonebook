@@ -1,18 +1,15 @@
 import { useSelector } from 'react-redux';
-import {
-  selectErrorContacts,
-  selectFilter,
-  selectIsLoadingContacts,
-  selectVisibleContacts,
-} from 'store/selectors';
 import styles from './PhonebookList.module.scss';
 import visibleContactsMap from './visibleContactsMap';
+import { selectVisibleContacts } from 'store/contacts/selectors';
+import { selectFilter } from 'store/filter/selectors';
+import { selectError, selectIsLoading } from 'store/rootReducers/selectors';
 
 export const PhonebookList = ({ recent = false }) => {
   const visibleContacts = useSelector(selectVisibleContacts);
   const filter = useSelector(selectFilter);
-  const isLoading = useSelector(selectIsLoadingContacts);
-  const error = useSelector(selectErrorContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   return (
     <>

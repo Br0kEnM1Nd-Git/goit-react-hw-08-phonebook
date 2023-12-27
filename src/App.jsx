@@ -1,9 +1,9 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AuthLayout from 'layout/AuthLayout';
-import { selectToken } from 'store/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { authRefreshThunk } from 'store/auth/authSlice';
+import { selectToken } from 'store/auth/selectors';
+import { authRefreshThunk } from 'store/auth/thunks';
 
 const Layout = lazy(() => import('./layout'));
 const Home = lazy(() => import('./pages/Home'));

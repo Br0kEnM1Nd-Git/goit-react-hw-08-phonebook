@@ -1,8 +1,8 @@
-import RegisterForm from 'components/Auth/RegisterForm';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectIsLoggedIn } from 'store/selectors';
+import RegisterForm from 'components/Auth/RegisterForm';
+import { selectIsLoggedIn } from 'store/auth/selectors';
 
 const Register = () => {
   const navigate = useNavigate();

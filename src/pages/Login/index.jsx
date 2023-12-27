@@ -1,8 +1,8 @@
-import LoginForm from 'components/Auth/LoginForm';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectIsLoggedIn } from 'store/selectors';
+import LoginForm from 'components/Auth/LoginForm';
+import { selectIsLoggedIn } from 'store/auth/selectors';
 
 const Login = () => {
   const navigate = useNavigate();
